@@ -15,10 +15,10 @@ COPY . /usr/src/app
 
 # Application Environment variables
 #ENV APP_ENV development
-ENV PORT 8000
+
 
 # Exposing Ports
-EXPOSE $PORT
+EXPOSE 8000
 
 
 # Running Python Application
