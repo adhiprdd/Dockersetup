@@ -1,20 +1,11 @@
-FROM python:2.7
-
-# Creating Application Source Code Directory
-RUN mkdir -p /usr/src/app
-
-# Setting Home Directory for containers
+FROM python:3.10.2
+ 
 WORKDIR /usr/src/app
-
-# Installing python dependencies
-COPY requirements.txt /usr/src/app/
+ 
+COPY requirements.txt ./
+ 
 RUN pip install --no-cache-dir -r requirements.txt
-
-# Copying src code to Container
-COPY . /usr/src/app
-# Running Python Application
-
-EXPOSE 8080
-
-#CMD gunicorn -b :8080 -c gunicorn.conf.py main:app
-CMD gunicorn -b :8080 -c gunicorn.conf.py main:app
+ 
+COPY . .
+ 
+CMD ["uvicorn", "main.py", "--host", "0.0.0.0", "--port", "8081"]
