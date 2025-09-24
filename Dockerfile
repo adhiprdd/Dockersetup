@@ -16,4 +16,5 @@ COPY . /usr/src/app
 
 EXPOSE 8080
 
+#CMD gunicorn -b :8080 -c gunicorn.conf.py main:app
 CMD gunicorn -b :8080 -c gunicorn.conf.py main:app
