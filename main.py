@@ -1,14 +1,7 @@
 
-from fastapi import FastAPI
-from typing import Union
-
-app = FastAPI()
-
-@app.get("/")
-def read_root():
-    return {"message": "Hello, FastAPI!"}
-
-
-@app.get("/items/{item_id}")
-def read_item(item_id: int, item: Union[str, None] = None):
-    return {"item_id": item_id, "queryParameter_Q": item}
+from flask import Flask
+app = Flask(__name__)
+@app.route('/')
+def hello():
+   return "Hello from Flask in Docker Playground!"
+app.run(host='0.0.0.0', port=8001)
