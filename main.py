@@ -1,21 +1,14 @@
-import logging
 
-from flask import Flask, request, jsonify
+from fastapi import FastAPI
+from typing import Union
 
-app = Flask(__name__)
+app = FastAPI()
 
-@app.route('/')
-def hello():
-    """Return a friendly HTTP greeting."""
-    return 'Hello World'
+@app.get("/")
+def read_root():
+    return {"message": "Hello, FastAPI!"}
 
-@app.errorhandler(500)
-def server_error(e):
-    logging.exception('An error occurred during a request.')
-    return """
-    An internal error occurred: <pre>{}</pre>
-    See logs for full stacktrace.
-    """.format(e), 500
 
-if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=8080)
+@app.get("/items/{item_id}")
+def read_item(item_id: int, item: Union[str, None] = None):
+    return {"item_id": item_id, "queryParameter_Q": item}
