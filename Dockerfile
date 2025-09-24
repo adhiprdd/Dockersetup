@@ -14,4 +14,6 @@ RUN pip install --no-cache-dir -r requirements.txt
 COPY . /usr/src/app
 # Running Python Application
 
-CMD gunicorn -b :"0.0.0.0:8080" -c gunicorn.conf.py main:app
+EXPOSE 8080
+
+CMD gunicorn -b :8080 -c gunicorn.conf.py main:app
