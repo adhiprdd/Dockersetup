@@ -13,14 +13,9 @@ RUN pip install --no-cache-dir -r requirements.txt
 # Copying src code to Container
 COPY . /usr/src/app
 
-# Application Environment variables
-#ENV APP_ENV development
-ENV PORT 8080
 
-# Exposing Ports
-EXPOSE $PORT
 
 
 
 # Running Python Application
-CMD gunicorn -b :$PORT -c gunicorn.conf.py main:app
+CMD ["gunicorn","-b" :"0.0.0.0:5000","-c gunicorn.conf.py main:app"]
