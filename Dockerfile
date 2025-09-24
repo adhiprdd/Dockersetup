@@ -22,7 +22,7 @@ EXPOSE $PORT
 
 
 # Running Python Application
-CMD ["gunicorn", "main.py", "-b", "0.0.0.0:8000"]
+CMD ["python", "main.py", "-b", "0.0.0.0:8000"]
 
 
  
