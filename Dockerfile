@@ -12,10 +12,6 @@ RUN pip install --no-cache-dir -r requirements.txt
 
 # Copying src code to Container
 COPY . /usr/src/app
-
-
-
-
-
 # Running Python Application
-CMD ["gunicorn","-b" :"0.0.0.0:5000","-c gunicorn.conf.py main:app"]
+
+CMD gunicorn -b :"0.0.0.0:8080" -c gunicorn.conf.py main:app
